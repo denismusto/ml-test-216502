@@ -1,0 +1,6 @@
+com\example\endpoints\model\DnaEnum.class
+com\example\endpoints\EchoServlet.class
+com\example\endpoints\model\connection\ConnMysql.class
+com\example\endpoints\Person.class
+com\example\endpoints\model\PersonModel.class
+com\example\endpoints\AuthInfoServlet.class
