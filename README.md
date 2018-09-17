@@ -1,6 +1,6 @@
 # ml-test-216502
 
-Como utilizar a API referente a MeLi Test
+Como utilizar a API 
 
 ### URL Endpoint principal
 
