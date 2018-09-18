@@ -16,8 +16,13 @@
 
 package com.example.endpoints.model;
 
+import com.example.endpoints.model.connection.ConnMysql;
 import com.google.gson.JsonObject;
 import org.apache.commons.lang3.EnumUtils;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class PersonModel {
 
@@ -99,6 +104,35 @@ public class PersonModel {
     }
 
     return ret;
+  }
+
+  public JsonObject getStats() throws Exception {
+    try {
+
+      //Conn ---
+      ConnMysql connMysql = new ConnMysql();
+      Connection conn = connMysql.getConn();
+      String sql = "select sum(if(type = 'H', 1, 0)) as 'H', sum(if(type = 'M', 1, 0)) as 'M' from person";
+      PreparedStatement ps =  conn.prepareStatement(sql);
+      ResultSet rs = ps.executeQuery();
+      int h = 0;
+      int m = 0;
+      while(rs.next()){
+        h = rs.getInt("H");
+        m = rs.getInt("M");
+      }
+
+      //Conn ---
+
+      JsonObject jsonObject = new JsonObject();
+      jsonObject.addProperty("count_mutant_dna", m);
+      jsonObject.addProperty("count_human_dna", h);
+      jsonObject.addProperty("ratio", "");
+
+      return jsonObject;
+    } catch (Exception e){
+      throw new Exception("Erros Stats", e);
+    }
   }
 
 }

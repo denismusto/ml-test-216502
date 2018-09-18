@@ -27,6 +27,17 @@ produces:
 schemes:
   - "https"
 paths:
+  "/stats":
+    get:
+      description: "Test Stats"
+      operationId: "Stats"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Test"
+          schema:
+            type: string
   "/mutant":
     post:
       description: "Test Person"

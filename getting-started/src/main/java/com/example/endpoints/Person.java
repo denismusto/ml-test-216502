@@ -73,12 +73,6 @@ public class Person extends HttpServlet {
       PersonModel personModel = new PersonModel();
       JsonObject jsonObject = personModel.newPerson(dnaArray);
 
-      //Conn ---
-      //ConnMysql connMysql = new ConnMysql();
-      //Connection conn = connMysql.getConn();
-      //log("Connected");
-      //Conn ---
-
       if (jsonObject.get("personType").getAsString().equals("human")) {
         resp.setStatus(HttpServletResponse.SC_FORBIDDEN);
         JsonObject error = new JsonObject();
