@@ -13,5 +13,9 @@ Ambiente Flex do GCP, executando com Docker containers sobre VMs.
 
 ### Testando a aplicação
 
+Endpoint test ADN:
 1. Faça uma chamada POST para https://ml-api-216502.appspot.com/mutant, informando no body em formato JSON a seguinte informação:
   {"dna":["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]} ou {"dna":["ATGCGA","CGGTGC","TTATGT","AGAATG","TCCCTA","TCACTG"]}
+
+Endpoint report tests ADN:
+  https://ml-api-216502.appspot.com/stats
