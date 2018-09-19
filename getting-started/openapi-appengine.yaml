@@ -21,85 +21,87 @@ info:
 host: "ml-api-216502.appspot.com"
 # [END swagger]
 consumes:
-  - "application/json"
+- "application/json"
 produces:
-  - "application/json"
+- "application/json"
 schemes:
-  - "https"
+- "https"
 paths:
   "/stats":
-    get:
+    post:
       description: "Test Stats"
       operationId: "Stats"
+      security:
+      - api_key: []
       produces:
         - "application/json"
       responses:
         200:
-          description: "Test"
+          description: "Test Stats"
           schema:
             type: string
   "/mutant":
     post:
       description: "Test Person"
       operationId: "Test"
+      security:
+      - api_key: []
       produces:
-        - "application/json"
+      - "application/json"
       responses:
         200:
           description: "Test"
           schema:
             type: string
-      security:
-        - api_key: []
   "/echo":
     post:
       description: "Echo back a given message."
       operationId: "echo"
       produces:
-        - "application/json"
+      - "application/json"
       responses:
         200:
           description: "Echo"
           schema:
             $ref: "#/definitions/echoMessage"
       parameters:
-        -
-          description: "Message to echo"
-          in: body
-          name: message
-          required: true
-          schema:
-            $ref: "#/definitions/echoMessage"
+      -
+        description: "Message to echo"
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: "#/definitions/echoMessage"
       security:
-        - api_key: []
+      - api_key: []
   "/auth/info/googlejwt":
     get:
       description: "Returns the requests' authentication information."
       operationId: "auth_info_google_jwt"
       produces:
-        - "application/json"
+      - "application/json"
       responses:
         200:
           description: "Authenication info."
           schema:
             $ref: "#/definitions/authInfoResponse"
       security:
-        - api_key: []
-          google_jwt: []
+      - api_key: []
+        google_jwt: []
   "/auth/info/googleidtoken":
     get:
       description: "Returns the requests' authentication information."
       operationId: "authInfoGoogleIdToken"
       produces:
-        - "application/json"
+      - "application/json"
       responses:
         200:
           description: "Authenication info."
           schema:
             $ref: "#/definitions/authInfoResponse"
       security:
-        - api_key: []
-          google_id_token: []
+      - api_key: []
+        google_id_token: []
 definitions:
   echoMessage:
     type: "object"
